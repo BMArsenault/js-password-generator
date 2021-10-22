@@ -12,18 +12,10 @@ var generateBtn = document.querySelector("#generate");
 
 //generate password
 function generatePassword() {
-  const totalLength = prompt("How many characters would you like to use?");
+  const totalLength = prompt("How many characters would you like to use?  Must be between 8 and 128!");
   if(totalLength >= 8 && totalLength <= 128) {
     alert('Your new password will be ' + totalLength + ' characters long.')
-  }
-  var option = {
-  //  hasNumber: window.confirm('Would you like to include a number?'),
-  // hasUppercase: window.confirm('Would you like to include upper case letters?'),
-  // hasLowercase: window.confirm('Would you like to inclue lower case letters?'),
-  // hasSymbol: window.confirm('Would you like to include special characters?'),
   };
-
-  // if(!hasLowercase === false && hasUppercase === false && hasNumber === fals
 
   let upper = confirm("Would you like to include upper case letters?");
   let lower = confirm("Would you like to inclue lower case letters?");
@@ -46,9 +38,16 @@ function generatePassword() {
     allChars += "0123456789";
   }
 
-  else {
+  for (let i = 0; i <= totalLength; i++) {
+    let randomNumber = Math.floor(Math.random() * allChars.length)
+    var letter = allChars.substring(randomNumber, randomNumber + 1)
+    password += letter
+  }
+
+  if (password.length <= 8 && password.length >= 128) {
     alert('Your password must be 8 - 128 characters!')
   }
+  return password;
 }
 
 
