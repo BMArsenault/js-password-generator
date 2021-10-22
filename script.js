@@ -16,7 +16,41 @@ function generatePassword() {
   if(totalLength >= 8 && totalLength <= 128) {
     alert('Your new password will be ' + totalLength + ' characters long.')
   }
+  var option = {
+  //  hasNumber: window.confirm('Would you like to include a number?'),
+  // hasUppercase: window.confirm('Would you like to include upper case letters?'),
+  // hasLowercase: window.confirm('Would you like to inclue lower case letters?'),
+  // hasSymbol: window.confirm('Would you like to include special characters?'),
+  };
+
+  // if(!hasLowercase === false && hasUppercase === false && hasNumber === fals
+
+  let upper = confirm("Would you like to include upper case letters?");
+  let lower = confirm("Would you like to inclue lower case letters?");
+  let symbol = confirm("Would you like to include special characters?");
+  let number = confirm("Would you like to include a number?");
+
+  let allChars = '';
+  let password = '';
+
+  if(upper) {
+    allChars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  }
+  if(lower) {
+    allChars += "abcdefghijklmnopqrstuvwxyz";
+  }
+  if (symbol) {
+    allChars += "@%+\\/'!#$^?:,)(}{][~-_.";
+  }
+  if (number) {
+    allChars += "0123456789";
+  }
+
+  else {
+    alert('Your password must be 8 - 128 characters!')
+  }
 }
+
 
 // Write password to the #password input
 function writePassword() {
