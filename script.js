@@ -13,17 +13,17 @@ var generateBtn = document.querySelector("#generate");
 //generate password
 function generatePassword() {
   const totalLength = prompt("How many characters would you like to use?  Must be between 8 and 128!");
+
+  let allChars = '';
+  let password = '';
+
   if(totalLength >= 8 && totalLength <= 128) {
     alert('Your new password will be ' + totalLength + ' characters long.')
-  };
 
   let upper = confirm("Would you like to include upper case letters?");
   let lower = confirm("Would you like to inclue lower case letters?");
   let symbol = confirm("Would you like to include special characters?");
   let number = confirm("Would you like to include a number?");
-
-  let allChars = '';
-  let password = '';
 
   if(upper) {
     allChars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -36,18 +36,21 @@ function generatePassword() {
   }
   if (number) {
     allChars += "0123456789";
-  }
+  } 
+  console.log(totalLength)
 
-  for (let i = 0; i <= totalLength; i++) {
+  for (let i = 0; i < totalLength; i++) {
     let randomNumber = Math.floor(Math.random() * allChars.length)
     var letter = allChars.substring(randomNumber, randomNumber + 1)
     password += letter
   }
-
-  if (password.length <= 8 && password.length >= 128) {
+  console.log('password',password.length)
+  return password;
+}
+else {
+ // if length is not chosen between 8 and 128 
     alert('Your password must be 8 - 128 characters!')
   }
-  return password;
 }
 
 
